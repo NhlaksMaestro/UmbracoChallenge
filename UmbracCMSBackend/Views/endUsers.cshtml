@@ -1,0 +1,40 @@
+﻿@inherits UmbracoViewPage<ContentModels.Products>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
+<section class="section">
+
+    <div class="container">
+
+        <!-- todo: implement category selector -->
+        <!--
+        <nav class="nav-bar nav-bar--center nav-bar--air-bottom">
+            <a class="nav-link nav-link--black nav-link--active" href="">All</a>
+            <a class="nav-link nav-link--black" href="">Clothing</a>
+            <a class="nav-link nav-link--black" href="">Instruments</a>
+            <a class="nav-link nav-link--black" href="">Accessories</a>
+            <a class="nav-link nav-link--black" href="">Other</a>
+        </nav>
+        -->
+        <div class="product-grid">
+            @if (Model.StoredEndUsers != null)
+            {
+                foreach (EndUser endUser in Model.StoredEndUsers)
+                {
+                    <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">@endUser.Name</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@endUser.Surname</h6>
+                        <p class="card-text">@endUser.EmailAddress</p
+                        <p class="card-text">@endUser.StartDate</p>
+                        <p class="card-text">@endUser.EndDate</p>
+                      </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+</section>
